@@ -3,14 +3,90 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Prueba de juego</title>
-    <style>
-      html, body { margin: 0; height: 100%; overflow: hidden; background: #1e1e1e; }
-      #game { width: 100vw; height: 100vh; }
-    </style>
+    <title>Ruta Libre</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Rajdhani:wght@500;600;700&display=swap" rel="stylesheet" />
   </head>
   <body>
-    <div id="game"></div>
+    <canvas id="lienzo"></canvas>
+
+    <!-- Pantalla de carga -->
+    <div id="carga" class="capa carga">
+      <div class="logo">RUTA<span>LIBRE</span></div>
+      <div class="carga-pista"><div id="carga-barra" class="carga-barra"></div></div>
+      <p id="carga-texto" class="carga-texto">Cargando…</p>
+    </div>
+
+    <!-- Pantalla de inicio -->
+    <div id="inicio" class="capa inicio oculto">
+      <div class="inicio-caja">
+        <div class="logo grande">RUTA<span>LIBRE</span></div>
+        <p class="lema">Explora un mapa nuevo en cada partida y visita sus puntos de interés.</p>
+        <div class="controles">
+          <div class="teclas-grupo">
+            <div class="fila"><kbd>W</kbd></div>
+            <div class="fila"><kbd>A</kbd><kbd>S</kbd><kbd>D</kbd></div>
+          </div>
+          <span class="o">o</span>
+          <div class="teclas-grupo">
+            <div class="fila"><kbd>↑</kbd></div>
+            <div class="fila"><kbd>←</kbd><kbd>↓</kbd><kbd>→</kbd></div>
+          </div>
+        </div>
+        <p class="pista">Conduce hasta un círculo de luz para entrar en su menú.</p>
+        <button id="btn-jugar" class="btn-principal">Jugar</button>
+        <p class="pista pequena">o pulsa <kbd>Enter</kbd></p>
+      </div>
+    </div>
+
+    <!-- HUD -->
+    <div id="hud" class="oculto">
+      <div id="hud-destino" class="destino">
+        <span class="destino-flecha">▲</span>
+        <span class="destino-icono"></span>
+        <div class="destino-texto">
+          <small>Más cercano</small>
+          <span class="destino-nombre"></span>
+        </div>
+        <span class="destino-dist"></span>
+      </div>
+
+      <div class="minimapa-caja"><canvas id="minimapa"></canvas></div>
+
+      <div class="velocimetro">
+        <svg viewBox="0 0 120 120">
+          <path class="arco-fondo" d="M 22 98 A 50 50 0 1 1 98 98" />
+          <path id="hud-arco" class="arco" d="M 22 98 A 50 50 0 1 1 98 98" />
+        </svg>
+        <div class="vel-texto">
+          <span id="hud-vel">0</span>
+          <small>km/h</small>
+        </div>
+        <div class="alt">⛰ <span id="hud-alt">0 m</span></div>
+      </div>
+    </div>
+
+    <!-- Menú de cada punto -->
+    <div id="menu" class="capa menu oculto">
+      <div class="panel" role="dialog" aria-modal="true">
+        <header>
+          <span class="menu-icono"></span>
+          <div>
+            <h2 class="menu-titulo"></h2>
+            <p class="menu-subtitulo"></p>
+          </div>
+        </header>
+        <div class="menu-cuerpo"></div>
+        <footer>
+          <button class="btn-volver">← Volver</button>
+          <span class="pista pequena"><kbd>Esc</kbd> para volver</span>
+        </footer>
+      </div>
+    </div>
+
+    <div id="toast" class="toast"></div>
+
     <script type="module" src="/src/main.js"></script>
   </body>
 </html>

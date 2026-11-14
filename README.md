@@ -1,13 +1,27 @@
 # prueba-hosting
 
-Mini juego en Phaser 3 para comprobar que Vite + Vercel + Supabase funcionan juntos.
+**Ruta Libre**: juego 3D en Three.js para comprobar que Vite + Vercel + Supabase
+funcionan juntos con un front parecido al de un producto final.
 
-Un coche recorre un mapa generado al azar (cambia en cada recarga). En el mapa
-hay puntos de colores; al entrar en uno se abre su menú con un botón **← Volver**
-(o Esc). El punto **Estado Supabase** lee la tabla `prueba_conexion` y muestra sus filas.
+Un coche recorre un terreno con montañas, lagos y bosques generado al azar
+(cambia en cada recarga). Hay cinco puntos de interés con un círculo de luz;
+al entrar en uno se abre su menú con un botón **← Volver** (o Esc). El punto
+**Estado Supabase** lee la tabla `prueba_conexion` y muestra sus filas.
 
-Controles: flechas/WASD para conducir, clic en el suelo para ir hasta ahí,
-clic en un punto para ir y entrar.
+Controles: flechas o WASD.
+
+Todo (coche, árboles, edificios y texturas) se genera por código: no hay
+assets que descargar.
+
+| Carpeta | Contenido |
+|---|---|
+| `src/mundo/` | terreno, texturas, cielo y luz, vegetación, puntos de interés |
+| `src/coche.js` | modelo y física del coche |
+| `src/camara.js` | cámara en tercera persona |
+| `src/ui/` | HUD (velocímetro, minimapa, destino) y menús |
+| `src/supabase.js` | lectura de prueba de Supabase |
+
+Añadiendo `?debug` a la URL se expone `window.__juego` para pruebas automáticas.
 
 ## En local
 
