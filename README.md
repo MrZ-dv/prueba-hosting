@@ -1,7 +1,13 @@
 # prueba-hosting
 
-Mini app para comprobar que Vite + Vercel + Supabase funcionan juntos.
-Lee la tabla `prueba_conexion` de Supabase y muestra sus filas.
+Mini juego en Phaser 3 para comprobar que Vite + Vercel + Supabase funcionan juntos.
+
+Un coche recorre un mapa generado al azar (cambia en cada recarga). En el mapa
+hay puntos de colores; al entrar en uno se abre su menú con un botón **← Volver**
+(o Esc). El punto **Estado Supabase** lee la tabla `prueba_conexion` y muestra sus filas.
+
+Controles: flechas/WASD para conducir, clic en el suelo para ir hasta ahí,
+clic en un punto para ir y entrar.
 
 ## En local
 
